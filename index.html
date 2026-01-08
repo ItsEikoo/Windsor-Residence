@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Discover your next home at Windsor Residence">
+    <meta name="keywords" content="apartments, rentals, Windsor Residence, housing">
+    <title>Windsor Residence</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/hero-section.css">
+    <link rel="icon" href="./images/w-icon.png" type="image/png">
+    <script type="module" src="js/index.js" defer></script>
+</html>
+
+</head>
+<body>
+    <div class="navbar">
+        <div class="navbar-container">
+            <div class="navbar-left">
+                <img src="images/navbar-logo.png" alt="Windsor Residence" height="60" loading="lazy" href onclick="window.location.href='#home'" style="cursor: pointer;">
+            </div>
+         
+            <!--
+            <div class="navbar-center">
+                <a href="#home" aria-current="page" class="home-active">Home</a>
+                <a href="pages/search-page.html">Search</a>
+                <a href="#" onclick="openLoginModal()">Threads</a>
+                <a href="pages/about-us.html">About Us</a>
+            </div>
+    -->
+
+            <div class="navbar-right">
+                <button onclick="openLoginModal()" class="desktop-signin">
+                    Join / Sign In
+                </button>
+                <button class="hamburger" aria-label="Menu" aria-expanded="false">
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Mobile menu -->
+        <div class="mobile-menu">
+            <button onclick="openLoginModal()" class="mobile-signin">
+                Sign In
+            </button>
+        </div>
+    </div>
+
+    <div class="page active">
+   <section class="hero" id="home">
+    <div class="hero-content">
+        <div class="heading">
+            <h1>Discover Your Next Home at <span>Hiyori</span>, <span>Hampton</span>, and <span>Windsor</span></h1>
+            <p>Find the perfect apartment or room that matches your lifestyle — comfort, convenience, and class all in one place.</p>
+        </div>
+        <div class="residences-slider">
+            <div class="residence-card active">
+                <div class="residence-overlay"><p>Windsor Residences</p></div>
+                <img src="images/windsor.jpg" alt="Windsor Residence building">
+            </div>
+            <div class="residence-card">
+                <div class="residence-overlay"><p>Hampton Residences</p></div>
+                <img src="images/hampton.jpg" alt="Hampton Residence building">
+            </div>
+            <div class="residence-card">
+                <div class="residence-overlay"><p>Hiyori Suites</p></div>
+                <img src="images/hiyori.jpg" alt="Hiyori Suites building">
+            </div>
+        </div>
+    </div>
+</section>
+    
+ <!-- LOGIN MODAL -->
+<!--Log IN Page-->
+    <div id="loginModal" class="modal hidden" aria-hidden="true" aria-labelledby="loginModalTitle">
+        <div class="modal-overlay" onclick="closeLoginModal()"></div>
+        <div class="modal-content animated">
+            <div class="login-container">
+                <div class="login-left">
+                    <div class="logo-container">
+                        <img src="images/Windsor-icon.png" class="logo" alt="Windsor Logo" loading="lazy"/>
+                    </div>
+                    <h2 id="loginModalTitle">Log In</h2>
+                    <form id="loginForm" onsubmit="validateLoginForm(); return false;">
+                        <input type="text" id="loginUsername" placeholder="Username" aria-label="Username" />
+                        <div class="password-container">
+                            <input type="password" id="loginPassword" placeholder="Password">
+                            <span class="toggle-password" onclick="togglePassword('loginPassword', this)">
+                                <i class="fas fa-eye"></i>
+                            </span>
+                        </div>
+                        
+                        <!-- <a href="#" class="forgot" onclick="openForgotPasswordModal()">Forgot Password?</a>-->
+                        <button type="submit" class="btn-primary">Sign In</button> 
+                    </form>
+                    <div class="signup-prompt">  
+                        <p>Don't have an account? <a onclick="openSignupModal()" href="#" role="button">Sign up</a></p>
+                    </div>
+                  <!--  <div class="divider">OR</div>
+                    <button class="btn-social google">Continue with Google</button>-->
+                </div>
+                <div class="login-right">
+                    <img src="images/windsur.jpg" alt="Windsor Suites lobby" loading="lazy"/>
+                </div>
+            </div>
+        </div>
+    </div>
+        
+    <!-- SIGN UP MODAL -->
+    <div class="registration-modal" id="signupModal" aria-hidden="true" aria-labelledby="signupModalTitle">
+        <div class="modal-overlay" onclick="closeSignupModal()"></div>
+        <div class="modal-content">
+            <div class="register-left">
+                <img src="images/windsur.jpg" alt="Windsor Residence building" loading="lazy">
+            </div>
+            <div class="register-right">
+                <div class="logo-container">
+                    <img src="images/Windsor-icon.png" alt="Windsor Logo" class="logo" loading="lazy">
+                </div>
+                <h2 id="signupModalTitle">Registration</h2>
+                <input type="text" placeholder="Username" aria-label="Username" required>
+                <input type="email" placeholder="Email Address" aria-label="Email" required >
+                <input type="tel" placeholder="Phone" aria-label="Phone number" required >
+
+                <div class="password-wrapper">
+                    <input type="password" id="regPassword" placeholder="Password" required>
+                        <span class="toggle-password" onclick="togglePassword('regPassword', this)" role="button" aria-label="Toggle password visibility">
+                            <i class="fa-solid fa-eye"></i> 
+                        </span>
+                </div>
+
+                <div class="password-wrapper">
+                    <input type="password" id="confirmPassword" placeholder="Confirm Password" required>
+                    <span class="toggle-password" onclick="togglePassword('confirmPassword', this)" role="button" aria-label="Toggle password visibility">
+                        <i class="fa-solid fa-eye"></i>
+                    </span>
+                </div>
+
+                <div class="terms">
+                    <input type="checkbox" id="terms" required>
+                    <label for="terms">I agree to the <a href="#">Terms and Conditions</a></label>
+                </div>
+                <button class="register-btn" onclick="validateSignupForm()">Sign Up</button>
+                <div class="switch">
+                    Already have an account? <a href="#" onclick="switchToLogin()" role="button">Sign In</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+            <!-- FORGOT PASSWORD MODAL -->
+        <div id="forgotPasswordModal" class="modal hidden" aria-hidden="true" aria-labelledby="forgotPasswordModalTitle">
+            <div class="modal-overlay" onclick="closeForgotPasswordModal()"></div>
+            <div class="modal-content animated">
+                <div class="login-container">
+                    <div class="login-left">
+                        <div class="logo-container">
+                            <img src="images/Windsor-icon.png" class="logo" alt="Windsor Logo" loading="lazy"/>
+                        </div>
+                        <h2 id="forgotPasswordModalTitle">Reset Password</h2>
+                        <input type="email" id="forgotEmail" placeholder="Enter your email" aria-label="Email" required />
+                        <button class="btn-primary" onclick="handleForgotPassword()">Send Reset Link</button>
+                        <p class="switch">
+                            Back to <a href="#" onclick="switchToLoginFromForgot()">Sign In</a>
+                        </p>
+                    </div>
+                    <div class="login-right">
+                        <img src="images/windsur.jpg" alt="Windsor Suites lobby" loading="lazy"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- OTP VERIFICATION MODAL -->
+        <div id="otpModal" class="modal hidden" aria-hidden="true" aria-labelledby="otpModalTitle">
+            <div class="modal-overlay" onclick="closeOtpModal()"></div>
+            <div class="modal-content animated">
+                <div class="login-container">
+                    <div class="login-left">
+                        <div class="logo-container">
+                            <img src="images/Windsor-icon.png" class="logo" alt="Windsor Logo" loading="lazy"/>
+                        </div>
+                        <h2 id="otpModalTitle">Email Verification</h2>
+                        <p>Enter the 6-digit OTP sent to your email</p>
+                        <input type="hidden" id="otpEmail" />
+                        <input type="text" id="otpInput" placeholder="6-digit OTP" maxlength="6" aria-label="OTP Code" />
+                        <button class="btn-primary" onclick="verifyOtp()">Verify</button>
+                        <p class="switch">Already verified? <a href="#" onclick="switchToLogin()">Sign in</a></p>
+                        <p>Didn’t receive the code? <a href="#" onclick="resendOtp()">Resend</a></p>
+
+                    </div>
+                    <div class="login-right">
+                        <img src="images/windsur.jpg" alt="Windsor Suites" loading="lazy" />
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+   
+<!-- 
+   
+     <section class="deals-section">
+        <h2>Discover our Best Deals</h2>
+        <div class="deals-nav">
+            <button class="scroll-btn left" id="scrollLeftBtn" aria-label="Scroll left">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            <div class="scroll-container" id="scrollContainer">
+                <div class="card">
+                    <div class="card-badge">Popular</div>
+                    <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80" alt="Luxury Apartment">
+                    <div class="card-body">
+                        <h3>Modern Luxury Suite</h3>
+                        <p class="location"><i class="fas fa-map-marker-alt"></i> Windsor Residence</p>
+                        <div class="features">
+                            <span class="feature"><i class="fas fa-bed"></i> 3 Beds</span>
+                            <span class="feature"><i class="fas fa-bath"></i> 2 Baths</span>
+                            <span class="feature"><i class="fas fa-ruler-combined"></i> 450 sqft</span>
+                        </div>
+                        <div class="price">$280,000</div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-badge">New</div>
+                    <img src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80" alt="Cozy Studio">
+                    <div class="card-body">
+                        <h3>Cozy Studio Apartment</h3>
+                        <p class="location"><i class="fas fa-map-marker-alt"></i> Hiyori Suites</p>
+                        <div class="features">
+                            <span class="feature"><i class="fas fa-bed"></i> 1 Bed</span>
+                            <span class="feature"><i class="fas fa-bath"></i> 1 Bath</span>
+                            <span class="feature"><i class="fas fa-ruler-combined"></i> 300 sqft</span>
+                        </div>
+                        <div class="price">$150,000</div>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=958&q=80" alt="Penthouse Suite">
+                    <div class="card-body">
+                        <h3>Penthouse with View</h3>
+                        <p class="location"><i class="fas fa-map-marker-alt"></i> Hampton Residence</p>
+                        <div class="features">
+                            <span class="feature"><i class="fas fa-bed"></i> 4 Beds</span>
+                            <span class="feature"><i class="fas fa-bath"></i> 3 Baths</span>
+                            <span class="feature"><i class="fas fa-ruler-combined"></i> 650 sqft</span>
+                        </div>
+                        <div class="price">$420,000</div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-badge">Discount</div>
+                    <img src="https://images.unsplash.com/photo-1595526114035-0d45ed16cfbf?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80" alt="Family Apartment">
+                    <div class="card-body">
+                        <h3>Family Friendly Unit</h3>
+                        <p class="location"><i class="fas fa-map-marker-alt"></i> Windsor Residence</p>
+                        <div class="features">
+                            <span class="feature"><i class="fas fa-bed"></i> 3 Beds</span>
+                            <span class="feature"><i class="fas fa-bath"></i> 2 Baths</span>
+                            <span class="feature"><i class="fas fa-ruler-combined"></i> 500 sqft</span>
+                        </div>
+                        <div class="price">$310,000</div>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80" alt="Executive Suite">
+                    <div class="card-body">
+                        <h3>Executive Business Suite</h3>
+                        <p class="location"><i class="fas fa-map-marker-alt"></i> Hiyori Suites</p>
+                        <div class="features">
+                            <span class="feature"><i class="fas fa-bed"></i> 2 Beds</span>
+                            <span class="feature"><i class="fas fa-bath"></i> 2 Baths</span>
+                            <span class="feature"><i class="fas fa-ruler-combined"></i> 400 sqft</span>
+                        </div>
+                        <div class="price">$290,000</div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-badge">Popular</div>
+                    <img src="https://images.unsplash.com/photo-1567767292278-a4f21aa2d36e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80" alt="Luxury Studio">
+                    <div class="card-body">
+                        <h3>Luxury Studio</h3>
+                        <p class="location"><i class="fas fa-map-marker-alt"></i> Hampton Residence</p>
+                        <div class="features">
+                            <span class="feature"><i class="fas fa-bed"></i> 1 Bed</span>
+                            <span class="feature"><i class="fas fa-bath"></i> 1 Bath</span>
+                            <span class="feature"><i class="fas fa-ruler-combined"></i> 350 sqft</span>
+                        </div>
+                        <div class="price">$200,000</div>
+                    </div>
+                </div>
+            </div>
+            <button class="scroll-btn right" id="scrollRightBtn" aria-label="Scroll right">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+        </div>
+        <div class="scroll-indicator" id="scrollIndicator">
+            
+        </div>
+    </section> -->
+
+    <!--Chill Coffee-->
+    <section class="coffee-section">
+        <h2 class="coffee-title">☕ Brew & Chill Coffee Shop</h2>
+        <p class="coffee-subtitle">
+            Step inside and unwind! Located within our residences, Brew & Chill is your perfect study or break spot. Try our bestselling iced lattes and pastries in a cozy corner just minutes from your apartment.
+        </p>
+        <div class="coffee-content">
+            <img src="images/ohayo.jpg" alt="Coffee Shop" class="coffee-image">
+            <div class="coffee-info">
+                <img src="images/icons/uhayo-removebg-preview.png" alt="Ohayo Brew Logo" class="coffee-logo">
+                <div class="coffee-link">
+                    <p><i class="fas fa-map-marker-alt"></i> 1420 Fajardo St., Sampaloc, Manila</p>
+                    <p><i class="fab fa-facebook"></i>
+                        <a href="https://www.facebook.com/profile.php?id=61575757890963" target="_blank">Facebook.com/Ohayobrew</a>
+                    </p>
+                </div>
+                <div class="coffee-description">
+                    Inspired by the Japanese word "Ohayo" meaning "good morning." Ohayo Brew brings a refreshing start to your day with carefully crafted beverages and a relaxing minimalist atmosphere. Known for its Japanese-inspired brews, sleek interiors, and tech-friendly space, it's the perfect spot for casual meetups, remote work, or a peaceful solo coffee break.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- What customer saying to us -->
+    <section class="section green testimonials-section">
+        <h2>What our customers are saying to us?</h2>
+        <div class="testimonial-container">
+            <div class="testimonial-card">
+                <img src="images/karl1.jpg" alt="Customer" class="avatar" loading="lazy">
+                <div class="testimonial-header">
+                    <div>
+                        <strong>Rafael Caparic</strong><br>
+                        <small>First-Time Buyer</small>
+                    </div>
+                    <span class="quote">❝</span>
+                </div>
+                <p>This site made my condo search so easy! I loved the 360° virtual tours—felt like I was actually there. Ended up choosing a unit at Hiyori Suites in just a few days!</p>
+            </div>
+            <div class="testimonial-card">
+                <img src="images/karl1.jpg" alt="Customer" class="avatar" loading="lazy">
+                <div class="testimonial-header">
+                    <div>
+                        <strong>Rafael Caparic</strong><br>
+                        <small>First-Time Buyer</small>
+                    </div>
+                    <span class="quote">❝</span>
+                </div>
+                <p>This site made my condo search so easy! I loved the 360° virtual tours—felt like I was actually there. Ended up choosing a unit at Hiyori Suites in just a few days!</p>
+            </div>
+            <div class="testimonial-card">
+                <img src="images/karl1.jpg" alt="Customer" class="avatar" loading="lazy">
+                <div class="testimonial-header">
+                    <div>
+                        <strong>Rafael Caparic</strong><br>
+                        <small>First-Time Buyer</small>
+                    </div>
+                    <span class="quote">❝</span>
+                </div>
+                <p>This site made my condo search so easy! I loved the 360° virtual tours—felt like I was actually there. Ended up choosing a unit at Hiyori Suites in just a few days!</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT US CONTENT -->
+<section class="about-section">
+    <div class="about-container">
+        <div class="about-intro">
+            <h2>Our Story</h2>
+            <p>
+                Founded in 2015, Windsor Residences began with a simple mission: to make finding the perfect home in Manila effortless and enjoyable. 
+                What started as a small team of real estate enthusiasts has grown into Manila's most trusted property platform.
+            </p>
+            <p>
+                Today, we help thousands of residents find their ideal homes, from cozy studios to premium penthouses, all equipped with modern amenities 
+                like pools, fitness centers, and smart living features.
+            </p>
+        </div>
+
+        <div class="mission-vision">
+            <div class="mission">
+                <h3><i class="fas fa-bullseye"></i> Our Mission</h3>
+                <p>To simplify property search through innovative technology while maintaining the human touch that makes finding a home special.</p>
+            </div>
+            <div class="vision">
+                <h3><i class="fas fa-eye"></i> Our Vision</h3>
+                <p>To become the most trusted and comprehensive real estate platform in the Philippines, connecting people with their perfect homes.</p>
+            </div>
+        </div>
+
+        <div class="features">
+            <h2>Why Choose Windsor Residences?</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <i class="fas fa-search-location"></i>
+                    <h4>Comprehensive Search</h4>
+                    <p>Filter by rental range, location, amenities, and more to find exactly what you're looking for.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-vr-cardboard"></i>
+                    <h4>Virtual Tours</h4>
+                    <p>Explore properties from the comfort of your current home with our 360-degree virtual tours.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-robot"></i>
+                    <h4>AI Recommendations</h4>
+                    <p>Our Optibot learns your preferences to suggest properties you'll love.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-headset"></i>
+                    <h4>Dedicated Support</h4>
+                    <p>Our team is available 24/7 to answer your questions and guide you.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- TEAM SECTION -->
+<section class="team-section">
+    <div class="team-container">
+        <h2>Meet Our Team</h2>
+        <p class="team-subtitle">The passionate people behind Windsor Residences</p>
+        
+        <div class="team-grid">
+            <div class="team-member">
+                <div class="member-photo" style="background-image: url('../images/team1.jpg');"></div>
+                <h4>Alexandra Reyes</h4>
+                <p>Founder & CEO</p>
+            </div>
+            <div class="team-member">
+                <div class="member-photo" style="background-image: url('../images/team2.jpg');"></div>
+                <h4>Michael Santos</h4>
+                <p>Head of Operations</p>
+            </div>
+            <div class="team-member">
+                <div class="member-photo" style="background-image: url('../images/team3.jpg');"></div>
+                <h4>Sarah Lim</h4>
+                <p>Customer Experience</p>
+            </div>
+            <div class="team-member">
+                <div class="member-photo" style="background-image: url('../images/team4.jpg');"></div>
+                <h4>James Wong</h4>
+                <p>Technology Director</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <!--Have more questions?
+    <section class="section faq-section">
+        <h2 class="faq-title">Have More Questions?</h2>
+        <p class="faq-subtitle">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        <div class="accordion">
+            <div class="accordion-item active">
+                <button class="accordion-header">
+                    <span>What methods of payments are supported?</span>
+                    <span class="icon"></span>
+                </button>
+                <div class="accordion-body">
+                    <p>HI hello</p>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <button class="accordion-header">
+                    <span>Can I cancel at anytime?</span>
+                    <span class="icon">+</span>
+                </button>
+                <div class="accordion-body">
+                    <p>Yes, cancellation is possible anytime via account settings.</p>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <button class="accordion-header">
+                    <span>How do I get a receipt for my purchase?</span>
+                    <span class="icon">+</span>
+                </button>
+                <div class="accordion-body">
+                    <p>Your receipt is emailed to you after every successful transaction.</p>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <button class="accordion-header">
+                    <span>Which license do I need?</span>
+                    <span class="icon">+</span>
+                </button>
+                <div class="accordion-body">
+                    <p>You only need a basic license for non-commercial use. Commercial use requires extended licensing.</p>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <button class="accordion-header">
+                    <span>How do I get access to a theme I purchased?</span>
+                    <span class="icon">+</span>
+                </button>
+                <div class="accordion-body">
+                    <p>You can download your purchased theme in your profile under "Downloads".</p>
+                </div>
+            </div>
+        </div>
+    </section>-->   
+
+   
+    <footer class="custom-footer">
+        <!--Footer <div class="footer-container">
+            <div class="footer-columns">
+                <div class="footer-column">
+                    <h4>About</h4>
+                    <ul>
+                        <li><a href="#">Terms & Conditions</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Copyrights</a></li>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Events</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Customer Service</h4>
+                    <ul>
+                        <li><a href="#">How it works?</a></li>
+                        <li><a href="#">Why partner with us?</a></li>
+                        <li><a href="#">Contact us</a></li>
+                        <li><a href="#">FAQs</a></li>
+                        <li><a href="#">Events</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Contact Us</h4>
+                    <p>karlavias09@gmail.com</p>
+                    <p>+63 099 345 3346</p>
+                </div>
+                <div class="footer-signup">
+                    <div class="logo-box">
+                        <img src="images/navbar-logo.png" alt="Windsor Residences" loading="lazy"/>
+                    </div>
+                    <button onclick="openLoginModal()" class="signup-button">Sign up now! →</button>
+                </div>
+            </div> -->
+            <div class="footer-bottom">
+                <p>We at Windsor Residences are committed to giving you the best experience. For any questions, comments, or issues, kindly contact us.</p>
+                <p><strong>Facebook/Messenger:</strong> <a href="https://www.facebook.com/windsorresidences" target="_blank">https://www.facebook.com/windsorresidences</a></p>
+                <p><strong>Address:</strong> 545 Montaña Street, Sampaloc, Manila, Philippines, 1008</p>
+            </div>
+        </div>
+    </footer>
+</div>
+</body>
+</html>

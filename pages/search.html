@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Rooms</title>
+  <!--Css-->
+  <link rel="stylesheet" href="../css/bot.css"/>
+  <link rel="stylesheet" href="../css/search.css" />
+
+  <!-- Icon Plugins -->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <!-- Panolens and Three.js -->
+  <script src="https://cdn.jsdelivr.net/npm/three@0.105.2/build/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/panolens@0.12.0/build/panolens.min.js"></script>
+  <script type="module" src="../js/bot-script.js"></script>
+  <link rel="icon" href="../images/w-icon.png">
+
+   <!-- Leaflet -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <script src="../js/map.js" defer></script>
+  <link rel="stylesheet" href="../css/map.css" />
+
+</head>
+<body>
+
+            <!--BOT SECTION -->
+        <div id="chat-widget" class="launcher-state">
+
+            <div id="chat-header">
+            <span>Chat Support</span>
+            <div id="chat-controls">
+                <button id="maximize-btn" style="display: inline-flex;"><i class="fa-solid fa-expand"></i></button>
+                <button id="minimize-btn" style="display: none;"><i class="fa-solid fa-compress"></i></button>
+                <button id="close-btn"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            </div>
+
+            <!-- Chat History -->
+            <div id="chatbox"></div>
+
+            <!-- Input Section -->
+            <div id="input-area">
+            <div id="userInputWrapper">
+                <input id="userInput" type="text" placeholder="Type a message..." />
+            </div>
+            <button id="sendBtn" title="Send"><i class="fa-regular fa-paper-plane"></i></button>
+            </div>
+            
+        </div>
+
+ <div class="navbar">
+        <div class="navbar-container">
+            <div class="navbar-left">
+                <img src="../images/navbar-logo.png" alt="Windsor Residence" height="60" loading="lazy" href onclick="window.location.href='#home'" style="cursor: pointer;">
+            </div>
+         
+            <div class="navbar-center">
+                <a href="../pages/home.html">Home</a>
+                <a href="../pages/search.html" aria-current="page" class="home-active">Search</a>
+                <a href="../pages/threads.html">Threads</a>
+            </div>
+    
+            <div class="navbar-right">
+                <div class="account-dropdown">
+                    <button class="desktop-my-account" id="accountButton">
+                        <i class="fas fa-user-circle"></i> My Account
+                        <!-- <span class="notification-badge" id="messageCount">3</span> -->
+                    </button>
+                    <div class="account-dropdown-content" id="accountDropdown">
+                       
+                        <!--
+                        <div class="user-info">
+                            <div class="name">Karl Lavarias the Destroyer</div>
+                            <div class="email">karl@example.com</div>
+                        </div>
+                        -->
+                        
+                        <div class="divider"></div>
+                           <a href="../pages/profile.html">
+                            <i class="fas fa-user-cog"></i> My Account
+                        </a>
+                        <a href="../pages/my-posts.html">
+                            <i class="fas fa-tachometer-alt"></i> My Post
+                        </a>                   
+                        <a href="../pages/inbox.html">
+                            <i class="fas fa-envelope"></i> Messages
+                            <span style="margin-left: auto; background: #006400; color: white; border-radius: 10px; padding: 2px 8px; font-size: 11px;">3 new</span>
+                        </a>                        
+                        <a href="../pages/move-ins.html">
+                            <i class="fas fa-receipt"></i> Move Ins
+                        </a>           
+                         <a href="../pages/reserve.html">
+                            <i class="fas fa-calendar-check"></i> Reserve Rooms
+                        </a>
+                        <div class="divider"></div>
+                        <a href="#" id="logoutBtn">
+                            <i class="fas fa-sign-out-alt"></i> Log Out
+                        </a>
+                    </div>
+                </div>
+
+                 <!-- Logout Confirmation Modal -->
+                <div id="logoutModal" class="modal">
+                    <div class="modal-content">
+                        <span class="close-btn" id="closeLogoutModal">&times;</span>
+                        <h2>Confirm Logout</h2>
+                        <p>Are you sure you want to log out?</p>
+                        <div class="modal-actions">
+                            <button id="cancelLogout" class="btn-cancel">Cancel</button>
+                            <button id="confirmLogout" class="btn-logout">Log Out</button>
+                        </div>
+                    </div>
+                </div>
+
+                <button class="hamburger" aria-label="Menu" aria-expanded="false">
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                </button>
+            </div>
+        </div>
+        
+        <div class="mobile-menu">
+            <a href="../pages/home.html">Home</a>
+            <a href="../pages/search.html">Search</a>
+            <a href="../pages/threads.html">Threads</a>
+            <div class="divider"></div>            
+            <a href="../pages/profile.html"><i class="fas fa-user-cog"></i> My Account</a>
+            <a href="../pages/my-posts.html"><i class="fas fa-tachometer-alt"></i> My Post </a>
+            <a href="../pages/inbox.html"><i class="fas fa-envelope"></i> Messages <span class="notification-badge">3</span></a>           
+            <a href="../pages/move-ins.html"><i class="fas fa-receipt"></i> Move Ins </a>
+            <a href="../pages/reserve.html"><i class="fas fa-calendar-check"></i> Reserve Rooms</a>
+            <div class="divider"></div>
+            <a href="#" id="logoutBtn"><i class="fas fa-sign-out-alt"></i> Log Out</a>
+        </div>
+    </div>
+
+  <!-- <div class="title-container">
+    <h1>Available Rooms</h1>
+  </div> -->
+
+  <div id="filter-container">
+    
+  <label for="filter">Filter by Location:</label>
+  <select id="filter">
+    <option value="">All</option>
+    <option>Windsor Residences</option>
+    <option>Hampton Residences</option>
+    <option>Hiyori Suites</option>
+  </select>
+
+
+  </div>
+
+  <div id="room-list-view"></div>
+
+  <!-- Detailed View (Hidden by Default) -->
+  <div id="room-details-view" style="display: none;"></div>
+
+<!-- Floating small map preview -->
+  <div id="mapPreview"></div>
+
+  <!-- Modal with big map -->
+  <div id="mapModal">
+    <div id="mapModalContent">
+      <span id="mapClose">&times;</span>
+      <div id="controls">
+        <label for="dormSelect">Select a Dormitory:</label>
+        <select id="dormSelect">
+          <option value="Hiyori Suites">Hiyori Suites</option>
+          <option value="Windsor Residences">Windsor Residences</option>
+          <option value="Hampton Residences">Hampton Residences</option>
+        </select>
+
+        <div id="filters-legend">
+          <fieldset id="filters">
+            <legend>Filter by category:</legend>
+            <label><input type="checkbox" id="filterUniversities" checked> <i class="fa-solid fa-school i-University"></i> University</label><br>
+            <label><input type="checkbox" id="filterReviewCenters" checked> <i class="fa-solid fa-book i-ReviewCenter"></i> Review Center</label><br>
+            <label><input type="checkbox" id="filterGovernment" checked> <i class="fa-solid fa-building-columns i-Government"></i> Government</label>
+          </fieldset>
+        </div>
+      </div>
+      <div id="map"></div>
+    </div>
+  </div>
+
+  <!--Footer-->
+    <footer class="custom-footer">
+        <!--<div class="footer-container">
+            <div class="footer-columns">
+                <div class="footer-column">
+                    <h4>About</h4>
+                    <ul>
+                        <li><a href="#">Terms & Conditions</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Copyrights</a></li>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Events</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Customer Service</h4>
+                    <ul>
+                        <li><a href="#">How it works?</a></li>
+                        <li><a href="#">Why partner with us?</a></li>
+                        <li><a href="#">Contact us</a></li>
+                        <li><a href="#">FAQs</a></li>
+                        <li><a href="#">Events</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Contact Us</h4>
+                    <p>karlavias09@gmail.com</p>
+                    <p>+63 099 345 3346</p>
+                </div>
+                <div class="footer-signup">
+                    <div class="logo-box">
+                        <img src="../images/navbar-logo.png" alt="Windsor Residences" loading="lazy"/>
+                    </div>
+                </div>
+            </div>-->
+            <div class="footer-bottom">
+                <p>We at Windsor Residences are committed to giving you the best experience. For any questions, comments, or issues, kindly contact us.</p>
+                <p><strong>Facebook/Messenger:</strong> <a href="https://www.facebook.com/windsorresidences" target="_blank">https://www.facebook.com/windsorresidences</a></p>
+                <p><strong>Address:</strong> 545 Montaña Street, Sampaloc, Manila, Philippines, 1008</p>
+            </div>
+        </div>
+    </footer>
+
+  <script type="module" src="../js/search.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Profile</title>
+    <!-- Icon Plugins -->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <link rel="icon" href="../images/w-icon.png">
+  <link rel="stylesheet" href="../css/profile.css">
+  <link rel="stylesheet" href="../css/bot.css"/>
+ 
+</head>
+<body>
+
+ <!--BOT SECTION -->
+  <div id="chat-widget" class="launcher-state">
+
+    <div id="chat-header">
+      <span>Chat Support</span>
+      <div id="chat-controls">
+        <button id="maximize-btn" style="display: inline-flex;"><i class="fa-solid fa-expand"></i></button>
+        <button id="minimize-btn" style="display: none;"><i class="fa-solid fa-compress"></i></button>
+        <button id="close-btn"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+    </div>
+
+    <!-- Chat History -->
+    <div id="chatbox"></div>
+
+    <!-- Input Section -->
+    <div id="input-area">
+      <div id="userInputWrapper">
+        <input id="userInput" type="text" placeholder="Type a message..." />
+      </div>
+      <button id="sendBtn" title="Send"><i class="fa-regular fa-paper-plane"></i></button>
+    </div>
+    
+  </div>
+
+  <script type="module" src="../js/bot-script.js"></script>
+
+<div class="navbar">
+        <div class="navbar-container">
+            <div class="navbar-left">
+                <img src="../images/navbar-logo.png" alt="Windsor Residence" height="60" loading="lazy" href onclick="window.location.href='#home'" style="cursor: pointer;">
+            </div>
+         
+            <div class="navbar-center">
+                <a href="../pages/home.html">Home</a>
+                <a href="../pages/search.html" >Search</a>
+                <a href="../pages/threads.html">Threads</a>
+            </div>
+    
+            <div class="navbar-right">
+                <div class="account-dropdown">
+                    <button class="desktop-my-account" id="accountButton">
+                        <i class="fas fa-user-circle"></i> My Account
+                        <!--<span class="notification-badge" id="messageCount">1</span> -->
+                    </button>
+                    <div class="account-dropdown-content" id="accountDropdown">
+                        <!--
+                        <div class="user-info">
+                            <div class="name">Karl Lavarias the Destroyer</div>
+                            <div class="email">karl@example.com</div>
+                        </div>
+                        -->
+                        <div class="divider"></div>
+                           <a href="../pages/profile.html">
+                            <i class="fas fa-user-cog"></i> My Account
+                        </a>
+                        <a href="../pages/my-posts.html">
+                            <i class="fas fa-tachometer-alt"></i> My Post
+                        </a>                   
+                        <a href="../pages/inbox.html">
+                            <i class="fas fa-envelope"></i> Messages
+                            <span style="margin-left: auto; background: #006400; color: white; border-radius: 10px; padding: 2px 8px; font-size: 11px;">1 new</span>
+                        </a>                        
+                        <a href="../pages/move-ins.html">
+                            <i class="fas fa-receipt"></i> Move Ins
+                        </a>           
+                         <a href="../pages/reserve.html">
+                            <i class="fas fa-calendar-check"></i> Reserve Rooms
+                        </a>
+                        <div class="divider"></div>
+                       <a href="#" id="logoutBtn">
+                            <i class="fas fa-sign-out-alt"></i> Log Out
+                        </a>
+                    </div>
+                </div>
+                <button class="hamburger" aria-label="Menu" aria-expanded="false">
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                </button>
+            </div>
+        </div>
+        
+        <div class="mobile-menu">
+            <a href="../pages/home.html">Home</a>
+            <a href="../pages/search.html">Search</a>
+            <a href="../pages/threads.html">Threads</a>
+            <div class="divider"></div>            
+            <a href="../pages/profile.html"><i class="fas fa-user-cog"></i> My Account</a>
+            <a href="../pages/my-posts.html"><i class="fas fa-tachometer-alt"></i> My Post </a>
+            <a href="../pages/inbox.html"><i class="fas fa-envelope"></i> Messages <span class="notification-badge">1</span></a>           
+            <a href="../pages/move-ins.html"><i class="fas fa-receipt"></i> Move Ins </a>
+            <a href="../pages/reserve.html"><i class="fas fa-calendar-check"></i> Reserve Rooms</a>
+            <div class="divider"></div>
+            <a href="#" id="logoutBtn"><i class="fas fa-sign-out-alt"></i> Log Out</a>
+        </div>
+    </div>
+
+     <!-- Logout Confirmation Modal -->
+                <div id="logoutModal" class="modal">
+                    <div class="modal-content">
+                        <span class="close-btn" id="closeLogoutModal">&times;</span>
+                        <h2>Confirm Logout</h2>
+                        <p>Are you sure you want to log out?</p>
+                        <div class="modal-actions">
+                            <button id="cancelLogout" class="btn-cancel">Cancel</button>
+                            <button id="confirmLogout" class="btn-logout">Log Out</button>
+                        </div>
+                    </div>
+                </div>
+
+
+<!-- PROFILE SECTION -->
+  <section id="profile-section">
+    <div class="profile-card">
+      <div class="avatar-container">
+        <div class="avatar-wrapper">
+          <img id="avatarPreview" src="../images/default-avatar.png" alt="User Avatar">
+          <label class="avatar-overlay">
+            <input type="file" id="avatar" accept="image/*">
+            <i class="fas fa-camera"></i>
+          </label>
+        </div>
+        <h2>Edit Profile</h2>
+      </div>
+
+      <form id="profileForm" class="profile-form">
+        <div class="form-group">
+          <label>Username</label>
+          <input type="text" id="username" name="username" required>
+        </div>
+
+        <div class="form-group">
+          <label>Email</label>
+          <input type="email" id="email" name="email" required readonly>
+        </div>
+
+        <div class="form-group">
+          <label>Phone</label>
+          <input type="tel" id="phone" name="phone" placeholder="Enter your phone number">
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="password-section">
+          <h3><i class="fas fa-lock"></i> Change Password</h3>
+          <div class="form-group">
+            <label>Current Password</label>
+            <div class="password-input">
+              <input type="password" id="currentPassword">
+              <i class="fas fa-eye toggle-password" data-target="currentPassword"></i>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>New Password</label>
+            <div class="password-input">
+              <input type="password" id="newPassword" minlength="8">
+              <i class="fas fa-eye toggle-password" data-target="newPassword"></i>
+            </div>
+            <small class="password-hint">Minimum 8 characters</small>
+          </div>
+
+          <div class="form-group">
+            <label>Confirm New Password</label>
+            <div class="password-input">
+              <input type="password" id="confirmPassword">
+              <i class="fas fa-eye toggle-password" data-target="confirmPassword"></i>
+            </div>
+          </div>
+
+          <button class="change-psw" type="button" id="changePasswordBtn">
+            Change Password
+          </button>
+          <div id="passwordMessage" class="message"></div>
+        </div>
+
+        <div class="form-actions">
+          <button class="submit-btn" type="submit">💾 Save Changes</button>
+          <button class="remove-btn" type="button" id="deleteAvatarBtn">🗑 Remove Photo</button>
+        </div>
+      </form>
+    </div>
+
+    <a href="../pages/home.html" class="back-button">
+      <i class="fas fa-arrow-left"></i> Back to Home
+    </a>
+  </section>
+  
+  <script type="module" src="../js/profile.js" defer></script>
+   
+</body>
+</html>

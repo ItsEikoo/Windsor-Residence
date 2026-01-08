@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Reset Password — Windsor Residences</title>
+  <style>
+    body { font-family: 'Poppins', sans-serif; margin:0; min-height:100vh; display:flex; align-items:center; justify-content:center; background:#f5f7fb; color:#222; }
+    .reset-card { width:100%; max-width:420px; background:#fff; padding:28px; border-radius:12px; box-shadow:0 8px 24px rgba(15,20,30,0.08); }
+    h1{ margin:0 0 14px; font-size:20px; }
+    p.sub{ margin:0 0 18px; color:#555; font-size:14px; }
+    .form-row{ margin-bottom:12px; }
+    input[type="password"]{ width:100%; padding:12px 14px; border-radius:8px; border:1px solid #e0e6ef; font-size:14px; }
+    .btn { width:100%; padding:10px 14px; border-radius:8px; background:#1d4ed8; color:white; border:0; cursor:pointer; font-weight:600; }
+    .muted { font-size:13px; color:#666; margin-top:12px; }
+    .error { color:#c62828; margin-top:8px; font-size:13px; }
+    .success { color:#166534; margin-top:8px; font-size:13px; }
+  </style>
+</head>
+<body>
+  <div class="reset-card">
+    <h1>Reset your password</h1>
+    <p class="sub">Enter a new password. Your reset link should already have authenticated your session.</p>
+
+    <div id="statusMessage" class="muted">Checking reset link...</div>
+
+    <div id="resetForm" style="display:none;">
+      <div class="form-row">
+        <input id="newPassword" type="password" placeholder="New password (min 8 chars)" />
+      </div>
+      <div class="form-row">
+        <input id="confirmPassword" type="password" placeholder="Confirm password" />
+      </div>
+      <div class="form-row">
+        <button class="btn" id="resetBtn">Set new password</button>
+      </div>
+      <div id="formFeedback"></div>
+    </div>
+
+    <div id="noSession" style="display:none;">
+      <p class="error">Invalid or expired reset link. Request a new one.</p>
+      <p class="muted"><a id="backHomeLink">Back to Home</a></p>
+    </div>
+  </div>
+
+  <script type="module" src="../js/reset.js"></script>
+</body>
+</html>

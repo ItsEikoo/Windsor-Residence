@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Forum Threads</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/bot.css">
+  <link rel="stylesheet" href="../css/threads.css">
+  <link rel="icon" href="../images/w-icon.png">
+</head>
+<body>
+
+ <div class="navbar">
+        <div class="navbar-container">
+            <div class="navbar-left">
+                <img src="../images/navbar-logo.png" alt="Windsor Residence" height="60" loading="lazy" href onclick="window.location.href='#home'" style="cursor: pointer;">
+            </div>
+         
+            <div class="navbar-center">
+                <a href="../pages/home.html">Home</a>
+                <a href="../pages/search.html">Search</a>
+                <a href="../pages/threads.html" aria-current="page" class="home-active">Threads</a>
+                
+            </div>
+    
+            <div class="navbar-right">
+                <div class="account-dropdown">
+                    <button class="desktop-my-account" id="accountButton">
+                        <i class="fas fa-user-circle"></i> My Account
+                       <!-- <span class="notification-badge" id="messageCount">1</span> -->
+                    </button>
+                    <div class="account-dropdown-content" id="accountDropdown">
+
+                      <!--
+                        <div class="user-info">
+                            <div class="name">Karl Lavarias the Destroyer</div>
+                            <div class="email">karl@example.com</div>
+                        </div>
+                        -->
+                        
+                        <div class="divider"></div>
+                           <a href="../pages/profile.html">
+                            <i class="fas fa-user-cog"></i> My Account
+                        </a>
+                        <a href="../pages/my-posts.html">
+                            <i class="fas fa-tachometer-alt"></i> My Post
+                        </a>                   
+                        <a href="../pages/inbox.html">
+                            <i class="fas fa-envelope"></i> Messages
+                            <span style="margin-left: auto; background: #006400; color: white; border-radius: 10px; padding: 2px 8px; font-size: 11px;">1 new</span>
+                        </a>                        
+                        <a href="../pages/move-ins.html">
+                            <i class="fas fa-receipt"></i> Move Ins
+                        </a>           
+                         <a href="../pages/reserve.html">
+                            <i class="fas fa-calendar-check"></i> Reserve Rooms
+                        </a>
+                        <div class="divider"></div>
+                       <a href="#" id="logoutBtn">
+                            <i class="fas fa-sign-out-alt"></i> Log Out
+                        </a>
+                    </div>
+                </div>
+
+                 <!-- Logout Confirmation Modal -->
+                <div id="logoutModal" class="modal">
+                    <div class="modal-content">
+                        <span class="close-btn" id="closeLogoutModal">&times;</span>
+                        <h2>Confirm Logout</h2>
+                        <p>Are you sure you want to log out?</p>
+                        <div class="modal-actions">
+                            <button id="cancelLogout" class="btn-cancel">Cancel</button>
+                            <button id="confirmLogout" class="btn-logout">Log Out</button>
+                        </div>
+                    </div>
+                </div>
+
+                <button class="hamburger" aria-label="Menu" aria-expanded="false">
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                </button>
+            </div>
+        </div>
+        
+        <div class="mobile-menu">
+            <a href="../pages/home.html">Home</a>
+            <a href="../pages/search.html">Search</a>
+            <a href="../pages/threads.html">Threads</a>
+            <div class="divider"></div>            
+            <a href="../pages/profile.html"><i class="fas fa-user-cog"></i> My Account</a>
+            <a href="../pages/my-posts.html"><i class="fas fa-tachometer-alt"></i> My Post </a>
+            <a href="../pages/inbox.html"><i class="fas fa-envelope"></i> Messages <span class="notification-badge">1</span></a>           
+            <a href="../pages/move-ins.html"><i class="fas fa-receipt"></i> Move Ins </a>
+            <a href="../pages/reserve.html"><i class="fas fa-calendar-check"></i> Reserve Rooms</a>
+            <div class="divider"></div>
+            <a href="#" id="logoutBtn"><i class="fas fa-sign-out-alt"></i> Log Out</a>
+        </div>
+    </div>
+
+  <!-- Main Content -->
+  <main class="forum-container">
+    <h1>Community Forum</h1>
+    <p class="user-info" id="user-info"></p>
+    
+    <!-- Thread Creation -->
+    <div class="thread-create">
+      <input type="text" id="new-thread-title" placeholder="What would you like to discuss?">
+      <button onclick="createThread()">
+        <i class="fas fa-plus"></i> Create Thread
+      </button>
+    </div>
+
+    <!-- Threads List -->
+    <div class="threads-list" id="threads-list">
+      <!-- Threads will be loaded here by JavaScript -->
+      <div class="loading">Loading threads...</div>
+    </div>
+  </main>
+
+
+  <!--BOT SECTION -->
+  <div id="chat-widget" class="launcher-state">
+
+    <div id="chat-header">
+      <span>Chat Support</span>
+      <div id="chat-controls">
+        <button id="maximize-btn" style="display: inline-flex;"><i class="fa-solid fa-expand"></i></button>
+        <button id="minimize-btn" style="display: none;"><i class="fa-solid fa-compress"></i></button>
+        <button id="close-btn"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+    </div>
+
+    <!-- Chat History -->
+    <div id="chatbox"></div>
+
+    <!-- Input Section -->
+    <div id="input-area">
+      <div id="userInputWrapper">
+        <input id="userInput" type="text" placeholder="Type a message..." />
+      </div>
+      <button id="sendBtn" title="Send"><i class="fa-regular fa-paper-plane"></i></button>
+    </div>
+    
+  </div>
+
+  <script type="module" src="../js/bot-script.js"></script>
+  <script type="module" src="../js/threads.js"></script>
+</body>
+</html>

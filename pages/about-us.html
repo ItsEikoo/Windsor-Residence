@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Discover Windsor Residences - Your trusted partner in finding the perfect home in Manila. Learn about our mission, team, and values.">
+    <meta name="keywords" content="Windsor Residences, About, Company Info, Manila Real Estate, Property Finder">
+    <title>About Us | Windsor Residences</title>
+    <!-- Icon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- CSS Styles -->
+    <link rel="stylesheet" href="../css/about-us.css">
+    <link rel="icon" href="../images/w-icon.png">
+    <script src="../js/about-us.js" defer></script>
+</head>
+<body>
+
+<!-- NAVBAR HEADER -->
+<div class="navbar">
+    <div class="navbar-container">
+        <!-- Left-aligned logo -->
+        <div class="navbar-left">
+            <a href="../index.html"><img src="../images/navbar-logo.png" alt="Windsor Residence" height="60" loading="lazy"></a>
+        </div>
+        
+        <!-- Center-aligned desktop nav -->
+        <div class="navbar-center">
+            <a href="../index.html">Home</a>
+            <a href="../pages/search-page.html">Search</a>
+            <a href="#" onclick="openLoginModal()">Threads</a>
+            <a href="about-us.html" class="home-active" aria-current="page">About Us</a>
+        </div>
+        
+        <!-- Right-aligned elements -->
+        <div class="navbar-right">
+            <button onclick="openLoginModal()" class="desktop-signin">
+                Join / Sign In
+            </button>
+            <button class="hamburger" aria-label="Menu" aria-expanded="false">
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+            </button>
+        </div>
+    </div>
+    
+    <!-- Mobile menu (slides from right) -->
+    <div class="mobile-menu">
+        <a href="../index.html">Home</a>
+        <a href="../pages/search-page.html">Search</a>
+        <a href="#" onclick="openLoginModal()">Optibot</a>
+        <a href="about-us.html" class="mobile-active">About Us</a>
+        <button onclick="openLoginModal()" class="mobile-signin">
+            Sign In
+        </button>
+    </div>
+</div>
+
+<!--Log IN Page-->
+    <div id="loginModal" class="modal hidden" aria-hidden="true" aria-labelledby="loginModalTitle">
+        <div class="modal-overlay" onclick="closeLoginModal()"></div>
+        <div class="modal-content animated">
+            <div class="login-container">
+                <div class="login-left">
+                    <div class="logo-container">
+                        <img src="../images/Windsor-icon.png" class="logo" alt="Windsor Logo" loading="lazy"/>
+                    </div>
+                    <h2 id="loginModalTitle">Log In</h2>
+                    <input type="text" placeholder="Username" aria-label="Username" />
+                    <div class="password-container">
+                        <input type="password" id="passwordInput" placeholder="Password">
+                        <span class="toggle-password" onclick="togglePassword('passwordInput', this)">
+                            <i class="fas fa-eye"></i>
+                        </span>
+                    </div>
+                    <a href="#" class="forgot">Forgot Password?</a>
+                    <button class="btn-primary" onclick="validateLoginForm()">Sign In</button>
+                    <div class="signup-prompt">  
+                        <p>Don't have an account? <a onclick="openSignupModal()" href="#" role="button">Sign up</a></p>
+                    </div>
+                    <div class="divider">OR</div>
+                    <button class="btn-social google">Continue with Google</button>
+                    <button class="btn-social facebook">Continue with Facebook</button>
+                </div>
+                <div class="login-right">
+                    <img src="../images/windsur.jpg" alt="Windsor Suites lobby" loading="lazy"/>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SIGN UP MODAL -->
+    <div class="registration-modal" id="signupModal" aria-hidden="true" aria-labelledby="signupModalTitle">
+        <div class="modal-overlay" onclick="closeSignupModal()"></div>
+        <div class="modal-content">
+            <div class="register-left">
+                <img src="../images/windsur.jpg" alt="Windsor Residence building" loading="lazy">
+            </div>
+            <div class="register-right">
+                <div class="logo-container">
+                    <img src="../images/Windsor-icon.png" alt="Windsor Logo" class="logo" loading="lazy">
+                </div>
+                <h2 id="signupModalTitle">Registration</h2>
+                <input type="text" placeholder="Username" aria-label="Username" required>
+                <input type="email" placeholder="Email Address" aria-label="Email" required >
+                <input type="tel" placeholder="Phone" aria-label="Phone number" required >
+
+                <div class="password-wrapper">
+                    <input type="password" id="regPassword" placeholder="Password" required>
+                        <span class="toggle-password" onclick="togglePassword('regPassword', this)" role="button" aria-label="Toggle password visibility">
+                            <i class="fa-solid fa-eye"></i> 
+                        </span>
+                </div>
+
+                <div class="password-wrapper">
+                    <input type="password" id="confirmPassword" placeholder="Confirm Password" required>
+                    <span class="toggle-password" onclick="togglePassword('confirmPassword', this)" role="button" aria-label="Toggle password visibility">
+                        <i class="fa-solid fa-eye"></i>
+                    </span>
+                </div>
+
+                <div class="terms">
+                    <input type="checkbox" id="terms" required>
+                    <label for="terms">I agree to the <a href="#">Terms and Conditions</a></label>
+                </div>
+                <button class="register-btn" onclick="validateSignupForm()">Sign Up</button>
+                <div class="switch">
+                    Already have an account? <a href="#" onclick="switchToLogin()" role="button">Sign In</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<!-- HERO SECTION -->
+<section class="hero-section">
+    <div class="hero-content">
+        <h1>Discover <span>Windsor</span> <span>Residence</span></h1>
+        <p>Your trusted partner in finding the perfect home in Manila</p>
+    </div>
+</section>
+
+<!-- ABOUT US CONTENT -->
+<section class="about-section">
+    <div class="about-container">
+        <div class="about-intro">
+            <h2>Our Story</h2>
+            <p>
+                Founded in 2015, Windsor Residences began with a simple mission: to make finding the perfect home in Manila effortless and enjoyable. 
+                What started as a small team of real estate enthusiasts has grown into Manila's most trusted property platform.
+            </p>
+            <p>
+                Today, we help thousands of residents find their ideal homes, from cozy studios to premium penthouses, all equipped with modern amenities 
+                like pools, fitness centers, and smart living features.
+            </p>
+        </div>
+
+        <div class="mission-vision">
+            <div class="mission">
+                <h3><i class="fas fa-bullseye"></i> Our Mission</h3>
+                <p>To simplify property search through innovative technology while maintaining the human touch that makes finding a home special.</p>
+            </div>
+            <div class="vision">
+                <h3><i class="fas fa-eye"></i> Our Vision</h3>
+                <p>To become the most trusted and comprehensive real estate platform in the Philippines, connecting people with their perfect homes.</p>
+            </div>
+        </div>
+
+        <div class="features">
+            <h2>Why Choose Windsor Residences?</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <i class="fas fa-search-location"></i>
+                    <h4>Comprehensive Search</h4>
+                    <p>Filter by rental range, location, amenities, and more to find exactly what you're looking for.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-vr-cardboard"></i>
+                    <h4>Virtual Tours</h4>
+                    <p>Explore properties from the comfort of your current home with our 360-degree virtual tours.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-robot"></i>
+                    <h4>AI Recommendations</h4>
+                    <p>Our Optibot learns your preferences to suggest properties you'll love.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-headset"></i>
+                    <h4>Dedicated Support</h4>
+                    <p>Our team is available 24/7 to answer your questions and guide you.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- TEAM SECTION -->
+<section class="team-section">
+    <div class="team-container">
+        <h2>Meet Our Team</h2>
+        <p class="team-subtitle">The passionate people behind Windsor Residences</p>
+        
+        <div class="team-grid">
+            <div class="team-member">
+                <div class="member-photo" style="background-image: url('../images/team1.jpg');"></div>
+                <h4>Karl Edrich Lavarias</h4>
+                <p>Founder & CEO</p>
+            </div>
+            <div class="team-member">
+                <div class="member-photo" style="background-image: url('../images/team2.jpg');"></div>
+                <h4>Shania Rualo</h4>
+                <p>Head of Operations</p>
+            </div>
+            <div class="team-member">
+                <div class="member-photo" style="background-image: url('../images/team3.jpg');"></div>
+                <h4>Edison C. Aguila Jr.</h4>
+                <p>Customer Experience</p>
+            </div>
+            <div class="team-member">
+                <div class="member-photo" style="background-image: url('../images/team4.jpg');"></div>
+                <h4>Jervis Kent Deocareza</h4>
+                <p>Technology Director</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA SECTION -->
+<section class="cta-section">
+    <div class="cta-container">
+        <h3>Ready to find your perfect home?</h3>
+        <p>Join thousands of satisfied residents who found their ideal living space through Windsor Residences.</p>
+        <div class="cta-buttons">
+            <button onclick="openLoginModal()" class="cta-primary">Get Started</button>
+            <a href="../pages/search-page.html" class="cta-secondary">Browse Properties</a>
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="custom-footer">
+    <div class="footer-container">
+        <div class="footer-columns">
+            <div class="footer-column">
+                <h4>About</h4>
+                <ul>
+                    <li><a href="#">Terms & Conditions</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Copyrights</a></li>
+                    <li><a href="about-us.html">About Us</a></li>
+                    <li><a href="#">Events</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Customer Service</h4>
+                <ul>
+                    <li><a href="#">How it works?</a></li>
+                    <li><a href="#">Why partner with us?</a></li>
+                    <li><a href="#">Contact us</a></li>
+                    <li><a href="#">FAQs</a></li>
+                    <li><a href="#">Events</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Contact Us</h4>
+                <p><i class="fas fa-envelope"></i> karlavias09@gmail.com</p>
+                <p><i class="fas fa-phone"></i> +63 099 345 3346</p>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            <div class="footer-signup">
+                <div class="logo-box">
+                    <img src="../images/navbar-logo.png" alt="Windsor Residences" loading="lazy"/>
+                </div>
+                <button onclick="openLoginModal()" class="signup-button">Sign up now! →</button>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>We at Windsor Residences are committed to giving you the best experience. For any questions, comments, or issues, kindly contact us.</p>
+            <p><strong>Facebook/Messenger:</strong> <a href="https://www.facebook.com/windsorresidences" target="_blank">https://www.facebook.com/windsorresidences</a></p>
+            <p><strong>Address:</strong> 545 Montaña Street, Sampaloc, Manila, Philippines, 1008</p>
+            <p class="copyright">© 2023 Windsor Residences. All rights reserved.</p>
+        </div>
+    </div>
+</footer>
+
+<script>
+    // Mobile menu toggle
+    const hamburger = document.querySelector('.hamburger');
+    const mobileMenu = document.querySelector('.mobile-menu');
+    
+    hamburger.addEventListener('click', () => {
+        hamburger.classList.toggle('active');
+        mobileMenu.classList.toggle('active');
+    });
+    
+    // Close mobile menu when clicking on a link
+    const mobileLinks = document.querySelectorAll('.mobile-menu a');
+    mobileLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            hamburger.classList.remove('active');
+            mobileMenu.classList.remove('active');
+        });
+    });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Discover your next home at Windsor Residence">
+    <meta name="keywords" content="apartments, rentals, Windsor Residence, housing">
+    <title>Search</title>
+    <!-- Icon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- Stylesheets and Scripts -->
+    <link rel="stylesheet" href="../css/search-page.css">
+    <link rel="icon" href="../images/w-icon.png">
+    <script src="../js/search-page.js" defer></script>
+</head>
+<body>  
+   <div class="navbar">
+        <div class="navbar-container">
+            <!-- Left-aligned logo -->
+            <div class="navbar-left">
+                <img href="../index.html" src="../images/navbar-logo.png" alt="Windsor Residence" height="60" loading="lazy" style="cursor: pointer;">
+            </div>
+            
+            <!-- Center-aligned desktop nav -->
+            <div class="navbar-center">
+                <a href="../index.html">Home</a>
+                <a href="search-page.html" aria-current="page" class="home-active">Search</a>
+                <a href="#" onclick="openLoginModal()">Threads</a>
+                <a href="../pages/about-us.html">About Us</a>
+            </div>
+            
+            <!-- Right-aligned elements -->
+            <div class="navbar-right">
+                <button onclick="openLoginModal()" class="desktop-signin">
+                    Join / Sign In
+                </button>
+                <button class="hamburger" aria-label="Menu" aria-expanded="false">
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Mobile menu (slides from right) -->
+        <div class="mobile-menu">
+            <a href="../index.html">Home</a>
+            <a href="#" class="mobile-active">Search</a>
+            <a href="#" onclick="openLoginModal()">Optibot</a>
+            <a href="../pages/about-us.html">About Us</a>
+            <button onclick="openLoginModal()" class="mobile-signin">
+                Sign In
+            </button>
+        </div>
+    </div>
+
+    <!--Log IN Page-->
+    <div id="loginModal" class="modal hidden" aria-hidden="true" aria-labelledby="loginModalTitle">
+        <div class="modal-overlay" onclick="closeLoginModal()"></div>
+        <div class="modal-content animated">
+            <div class="login-container">
+                <div class="login-left">
+                    <div class="logo-container">
+                        <img src="../images/Windsor-icon.png" class="logo" alt="Windsor Logo" loading="lazy"/>
+                    </div>
+                    <h2 id="loginModalTitle">Log In</h2>
+                    <input type="text" placeholder="Username" aria-label="Username" />
+                    <div class="password-container">
+                        <input type="password" id="passwordInput" placeholder="Password">
+                        <span class="toggle-password" onclick="togglePassword('passwordInput', this)">
+                            <i class="fas fa-eye"></i>
+                        </span>
+                    </div>
+                    <a href="#" class="forgot">Forgot Password?</a>
+                    <button class="btn-primary" onclick="validateLoginForm()">Sign In</button>
+                    <div class="signup-prompt">  
+                        <p>Don't have an account? <a onclick="openSignupModal()" href="#" role="button">Sign up</a></p>
+                    </div>
+                    <div class="divider">OR</div>
+                    <button class="btn-social google">Continue with Google</button>
+                    <button class="btn-social facebook">Continue with Facebook</button>
+                </div>
+                <div class="login-right">
+                    <img src="../images/windsur.jpg" alt="Windsor Suites lobby" loading="lazy"/>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SIGN UP MODAL -->
+    <div class="registration-modal" id="signupModal" aria-hidden="true" aria-labelledby="signupModalTitle">
+        <div class="modal-overlay" onclick="closeSignupModal()"></div>
+        <div class="modal-content">
+            <div class="register-left">
+                <img src="../images/windsur.jpg" alt="Windsor Residence building" loading="lazy">
+            </div>
+            <div class="register-right">
+                <div class="logo-container">
+                    <img src="../images/Windsor-icon.png" alt="Windsor Logo" class="logo" loading="lazy">
+                </div>
+                <h2 id="signupModalTitle">Registration</h2>
+                <input type="text" placeholder="Username" aria-label="Username" required>
+                <input type="email" placeholder="Email Address" aria-label="Email" required >
+                <input type="tel" placeholder="Phone" aria-label="Phone number" required >
+
+                <div class="password-wrapper">
+                    <input type="password" id="regPassword" placeholder="Password" required>
+                        <span class="toggle-password" onclick="togglePassword('regPassword', this)" role="button" aria-label="Toggle password visibility">
+                            <i class="fa-solid fa-eye"></i> 
+                        </span>
+                </div>
+
+                <div class="password-wrapper">
+                    <input type="password" id="confirmPassword" placeholder="Confirm Password" required>
+                    <span class="toggle-password" onclick="togglePassword('confirmPassword', this)" role="button" aria-label="Toggle password visibility">
+                        <i class="fa-solid fa-eye"></i>
+                    </span>
+                </div>
+
+                <div class="terms">
+                    <input type="checkbox" id="terms" required>
+                    <label for="terms">I agree to the <a href="#">Terms and Conditions</a></label>
+                </div>
+                <button class="register-btn" onclick="validateSignupForm()">Sign Up</button>
+                <div class="switch">
+                    Already have an account? <a href="#" onclick="switchToLogin()" role="button">Sign In</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<div class="filters">
+    <select id="residenceFilter">
+        <option value="">All</option>
+        <option value="Hampton Residence">Hampton Residence</option>
+        <option value="Windsor Residence">Windsor Residence</option>
+        <option value="Hiyori Suites">Hiyori Suites</option>
+    </select>
+
+    <select id="unitTypeFilter">
+        <option value="">Unit Type</option>
+        <option value="Studio Type">Studio Type</option>
+        <option value="1 Bedroom">1 Bedroom</option>
+        <option value="2 Bedroom">2 Bedroom</option>
+        <option value="3 Bedroom">3 Bedroom</option>
+        <option value="Penthouse Unit">Penthouse Unit</option>
+        <option value="Loft Type">Loft Type</option>
+    </select>
+
+    <select id="monthlyRangeFilter">
+        <option value="">Monthly Rent Range</option>
+        <option value="0-5000">₱ 0 - ₱ 5,000</option>
+        <option value="5001-8000">₱ 5,001 - ₱ 8,000</option>
+        <option value="8001-12000">₱ 8,001 - ₱ 12,000</option>
+        <option value="12001-15000">₱ 12,001 - ₱ 15,000</option>
+    </select>
+
+    <select id="floorAreaFilter">
+        <option value="">Floor Area</option>
+        <option value="20-30">20 - 30 sqm</option>
+        <option value="31-50">31 - 50 sqm</option>
+        <option value="51-80">51 - 80 sqm</option>
+        <option value="81-120">81 - 120 sqm</option>
+    </select>
+
+    <select id="amenitiesFilter">
+        <option value="">Amenities</option>
+        <option value="Pool">Pool</option>
+        <option value="Parking">Parking</option>
+        <option value="Gym">Gym</option>
+        <option value="Pet Friendly">Pet Friendly</option>
+    </select>
+
+    <button onclick="resetFilters()">Reset Filters</button>
+</div>
+
+<div class="property-container">
+    <div class="properties" id="propertyList">
+
+        <div class="property-card" data-price="5999" data-residence="Hampton Residence" data-unit-type="Studio Type" data-floor-area="30" data-amenities="Pool">
+            <img src="../images/Room-1.jpg" alt="Property Image">
+            <div class="property-details">
+                <h3>₱ 5,999 Monthly</h3>
+                <h2>Hampton Residence – Studio Type</h2>
+                <p>Smart 30 sqm studio ideal for students or solo renters. Features minimalist design and city access.</p>
+                <div class="property-actions">
+                    <button class="contact-btn">Contact</button>
+                    <button class="details-btn" onclick="openLoginModal()">More Details</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="property-card" data-price="6500" data-residence="Windsor Residence" data-unit-type="1 Bedroom" data-floor-area="45" data-amenities="Parking">
+            <img src="../images/Room-1.jpg" alt="Property Image">
+            <div class="property-details">
+                <h3>₱ 6,500 Monthly</h3>
+                <h2>Windsor Residence – 1 Bedroom</h2>
+                <p>Cozy 1-bedroom unit perfect for couples. Includes private balcony and modern kitchen setup.</p>
+                <div class="property-actions">
+                    <button class="contact-btn">Contact</button>
+                    <button class="details-btn" onclick="openLoginModal()">More Details</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="property-card" data-price="8200" data-residence="Hiyori Suites" data-unit-type="Loft Type" data-floor-area="60" data-amenities="Gym, Pool">
+            <img src="../images/Room-1.jpg" alt="Property Image">
+            <div class="property-details">
+                <h3>₱ 8,200 Monthly</h3>
+                <h2>Hiyori Suites – Loft Type</h2>
+                <p>Stylish loft unit with spacious living area, high ceilings, and a scenic view of the city skyline.</p>
+                <div class="property-actions">
+                    <button class="contact-btn">Contact</button>
+                    <button class="details-btn" onclick="openLoginModal()">More Details</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="property-card" data-price="7999" data-residence="Windsor Residence" data-unit-type="2 Bedroom" data-floor-area="70" data-amenities="Parking, Pool">
+            <img src="../images/Room-1.jpg" alt="Property Image">
+            <div class="property-details">
+                <h3>₱ 7,999 Monthly</h3>
+                <h2>Windsor Residence – 2 Bedroom</h2>
+                <p>Comfortable 2-bedroom unit ideal for small families. Includes parking and full kitchen appliances.</p>
+                <div class="property-actions">
+                    <button class="contact-btn">Contact</button>
+                    <button class="details-btn" onclick="openLoginModal()">More Details</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="property-card" data-price="10500" data-residence="Hampton Residence" data-unit-type="3 Bedroom" data-floor-area="90" data-amenities="Rooftop Access, Pet Friendly">
+            <img src="../images/Room-1.jpg" alt="Property Image">
+            <div class="property-details">
+                <h3>₱ 10,500 Monthly</h3>
+                <h2>Hampton Residence – 3 Bedroom</h2>
+                <p>Spacious 3-bedroom family unit with rooftop access, pet-friendly amenities, and large kitchen area.</p>
+                <div class="property-actions">
+                    <button class="contact-btn">Contact</button>
+                    <button class="details-btn" onclick="openLoginModal()">More Details</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="property-card" data-price="9000" data-residence="Hiyori Suites" data-unit-type="1 Bedroom" data-floor-area="50" data-amenities="Pool, 24/7 Security">
+            <img src="../images/Room-1.jpg" alt="Property Image">
+            <div class="property-details">
+                <h3>₱ 9,000 Monthly</h3>
+                <h2>Hiyori Suites – 1 Bedroom</h2>
+                <p>Modern 1-bedroom suite featuring premium furnishings, pool access, and 24-hour security services.</p>
+                <div class="property-actions">
+                    <button class="contact-btn">Contact</button>
+                    <button class="details-btn" onclick="openLoginModal()">More Details</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="property-card" data-price="6800" data-residence="Windsor Residence" data-unit-type="Studio Type" data-floor-area="35" data-amenities="Free Wi-Fi, Smart Storage">
+            <img src="../images/Room-1.jpg" alt="Property Image">
+            <div class="property-details">
+                <h3>₱ 6,800 Monthly</h3>
+                <h2>Windsor Residence – Studio Type</h2>
+                <p>Functional studio type with smart storage, suitable for work-from-home setups. Free Wi-Fi included.</p>
+                <div class="property-actions">
+                    <button class="contact-btn">Contact</button>
+                    <button class="details-btn" onclick="openLoginModal()">More Details</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="property-card" data-price="11200" data-residence="Hiyori Suites" data-unit-type="2 Bedroom Premium" data-floor-area="80" data-amenities="Rooftop Deck, Fitness Center, Private Parking">
+            <img src="../images/Room-1.jpg" alt="Property Image">
+            <div class="property-details">
+                <h3>₱ 11,200 Monthly</h3>
+                <h2>Hiyori Suites – 2 Bedroom Premium</h2>
+                <p>Luxury 2-bedroom suite with exclusive rooftop deck, fitness center access, and private parking.</p>
+                <div class="property-actions">
+                    <button class="contact-btn">Contact</button>
+                    <button class="details-btn" onclick="openLoginModal()">More Details</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="property-card" data-price="4999" data-residence="Hampton Residence" data-unit-type="Economy Studio" data-floor-area="25" data-amenities="Basic Furnishings, Ideal for Short-Term Stay">
+            <img src="../images/Room-1.jpg" alt="Property Image">
+            <div class="property-details">
+                <h3>₱ 4,999 Monthly</h3>
+                <h2>Hampton Residence – Economy Studio</h2>
+                <p>Budget-friendly studio type with basic furnishings, ideal for short-term stay or solo renters.</p>
+                <div class="property-actions">
+                    <button class="contact-btn">Contact</button>
+                    <button class="details-btn" onclick="openLoginModal()">More Details</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="property-card" data-price="12500" data-residence="Windsor Residence" data-unit-type="Penthouse Unit" data-floor-area="120" data-amenities="Panoramic Views, Designer Interiors, Private Elevator, VIP Concierge">
+            <img src="../images/Room-1.jpg" alt="Property Image">
+            <div class="property-details">
+                <h3>₱ 12,500 Monthly</h3>
+                <h2>Windsor Residence – Penthouse Unit</h2>
+                <p>Exclusive penthouse with panoramic views, designer interiors, private elevator, and VIP concierge.</p>
+                <div class="property-actions">
+                    <button class="contact-btn">Contact</button>
+                    <button class="details-btn" onclick="openLoginModal()">More Details</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Right container -->
+    <div class="news-sidebar">
+        <div class="sidebar-section">
+            <h3>Latest News</h3>
+            <div class="news-item">
+                <h4>New Windsor Residence Tower Opening</h4>
+                <p>Our new luxury tower will open next month with exclusive amenities.</p>
+                <a href="#">Read more →</a>
+            </div>
+            <div class="news-item">
+                <h4>Summer Rental Discounts</h4>
+                <p>Get 10% off on all 6-month leases signed before August 31st.</p>
+                <a href="#">Read more →</a>
+            </div>
+        </div>
+        
+        <div class="sidebar-section">
+            <h3>Featured Properties</h3>
+            <div class="featured-property">
+                <img src="../images/Room-1.jpg" alt="Featured Property">
+                <h4>Penthouse Suite</h4>
+                <p>₱ 15,000/month</p>
+                <button class="details-btn" onclick="openLoginModal()">View Details</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--Footer-->
+    <footer class="custom-footer">
+        <div class="footer-container">
+            <div class="footer-columns">
+                <div class="footer-column">
+                    <h4>About</h4>
+                    <ul>
+                        <li><a href="#">Terms & Conditions</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Copyrights</a></li>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Events</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Customer Service</h4>
+                    <ul>
+                        <li><a href="#">How it works?</a></li>
+                        <li><a href="#">Why partner with us?</a></li>
+                        <li><a href="#">Contact us</a></li>
+                        <li><a href="#">FAQs</a></li>
+                        <li><a href="#">Events</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Contact Us</h4>
+                    <p>karlavias09@gmail.com</p>
+                    <p>+63 099 345 3346</p>
+                </div>
+                <div class="footer-signup">
+                    <div class="logo-box">
+                        <img src="../images/navbar-logo.png" alt="Windsor Residences" loading="lazy"/>
+                    </div>
+                    <button onclick="openLoginModal()" class="signup-button">Sign up now! →</button>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>We at Lamudi are committed to giving you the best experience. For any questions, comments, or issues, kindly contact us.</p>
+                <p><strong>Facebook/Messenger:</strong> <a href="https://www.facebook.com/windsorresidences" target="_blank">https://www.facebook.com/windsorresidences</a></p>
+                <p><strong>Address:</strong> 545 Montaña Street, Sampaloc, Manila, Philippines, 1008</p>
+            </div>
+        </div>
+    </footer>
+
+
+</body>
+</html>

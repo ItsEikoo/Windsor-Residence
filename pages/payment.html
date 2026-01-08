@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Payment | Confirm Reservation</title>
+  <link rel="stylesheet" href="../css/payment.css" />
+  <link rel="icon" type="image/png" href="../images/w-icon.png" />
+</head>
+<body>
+  <div class="container">
+    <header>
+      <button class="back-btn" onclick="location.href='../pages/search.html'">
+        <span>←</span> Back to Search
+      </button>
+      <div>
+        <h1>Complete Your Reservation Payment</h1>
+        <p class="subtitle">Secure payment with GCash or PayMaya</p>
+      </div>
+    </header>
+    
+    <div class="card">
+      <div class="reservation-id">
+        <div>
+          <p>Reservation ID:</p>
+          <strong id="reservationId">Loading...</strong>
+        </div>
+        <button id="copyBtn" class="copy-btn">📋 Copy ID</button>
+      </div>
+      
+      <div class="payment-section">
+        <div class="qr-container">
+          <h2>Scan to Pay</h2>
+          <p>Use one of the QR codes below to complete your payment</p>
+          
+          <div class="qr-box" id="gcashBox">
+            <h3>GCash</h3>
+            <img id="gcashQR" alt="GCash QR" />
+            <p>Scan with GCash app</p>
+            <p class="qr-click-hint">Click QR code to enlarge</p>
+          </div>
+          
+          <div class="qr-box" id="paymayaBox">
+            <h3>PayMaya</h3>
+            <img id="paymayaQR" alt="PayMaya QR" />
+            <p>Scan with PayMaya app</p>
+            <p class="qr-click-hint">Click QR code to enlarge</p>
+          </div>
+        </div>
+        
+        <div class="upload-section">
+          <h3>Upload Payment Proof</h3>
+          <p>After making payment, upload your screenshot here</p>
+          
+          <form id="paymentProofForm" enctype="multipart/form-data">
+            <div class="form-group">
+              <label for="reservationInput">Reservation ID</label>
+              <input type="text" id="reservationInput" readonly>
+            </div>
+            
+            <div class="form-group">
+              <label for="paymentImage">Payment Screenshot (JPG/PNG)</label>
+              <input type="file" id="paymentImage" accept="image/*" required>
+            </div>
+            
+            <button type="submit" class="submit-btn">Submit Payment Proof</button>
+            <div id="uploadStatus" class="status-message"></div>
+          </form>
+        </div>
+      </div>
+      
+      <div class="note">
+        <p>After sending payment, please wait for confirmation from our admin team. You will receive an email once your payment is verified.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- QR Code Popup -->
+  <div class="qr-popup-overlay" id="qrPopup">
+    <div class="qr-popup">
+      <button class="qr-popup-close" id="closePopup">×</button>
+      <h3 class="qr-popup-title" id="popupTitle">GCash QR Code</h3>
+      <img class="qr-popup-image" id="popupQR" alt="QR Code" />
+      <p class="qr-popup-instruction" id="popupInstruction">Scan this QR code with your payment app</p>
+    </div>
+  </div>
+
+  <script type="module" src="../js/payment.js"></script>
+</body>
+</html>
